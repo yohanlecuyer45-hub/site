@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site avec plusieurs pages</title>
+    <style>
+        /* CSS intégré */
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        h1 {
+            color: #2c3e50;
+        }
+
+        h2 {
+            color: #3498db;
+        }
+
+        a {
+            text-decoration: none;
+            color: #1abc9c;
+        }
+
+        a:hover {
+            color: #16a085;
+        }
+
+        #css {
+            background-color: #ecf0f1;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        #index, #page1, #page2 {
+            margin-bottom: 30px;
+        }
+
+        img {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+<div id="index">
+    <h1>Bienvenue sur la présentation de mon site</h1>
+
+    <br><br><br>
+
+    <img src="logo lycee de lauthie.avif" alt="Logo" style="border: 3px solid black; width: 600px; height: 400px;">
+    <br>
+
+    <img src="photo.jpg" alt="Photo" style="border: 4px solid black; width: 480px; height: 320px;">
+    <br>
+
+    <h2><a href="https://www.lycee.fr" target="_blank">Visiter le site de mon Lycée ?</a></h2>
+    <br>
+
+    <img src="logo_sti_sin.png" alt="Logo STI SIN" style="border: 3px solid black; width: 241px; height: 147px;">
+    <br>
+
+    <h2><a href="#page1">Aller sur la page 1 de mon site ?</a></h2>
+</div>
+
+<div id="page1">
+    <h1>Bonjour et bienvenue sur la page 1 de mon site</h1>
+
+    <br><br>
+
+    <h2>Cette année je suis en STI2D option SIN</h2>
+
+    <h3>Voici les disciplines enseignées en STI2D_SIN :</h3>
+    <ol>
+        <li>Mathématiques</li>
+        <li>Physique-Chimie</li>
+        <li>Informatique</li>
+        <li>Technologies de l'ingénieur</li>
+        <li>Français</li>
+    </ol>
+
+    <br>
+
+    <h2><a href="#page2">Aller sur la page 2 de mon site ?</a></h2>
+
+    <br>
+
+    <h2><a href="#index">Revenir à la page d'accueil</a></h2>
+</div>
+
+<div id="page2">
+    <h1>Bonjour et bienvenue sur la page 2 de mon site</h1>
+
+    <br><br>
+
+    <h2>Ce TP fait partie de la 2ème série étudiée en spécialité SIN</h2>
+
+    <br>
+
+    <img src="logo_tp.png" alt="Logo TP" style="width: 600px; height: 292px;">
+
+    <br>
+
+    <h2><a href="#page1">Revenir à la page 1 de mon site ?</a></h2>
+
+    <br>
+
+    <h2><a href="#index">Revenir à la page d'accueil</a></h2>
+</div>
+<div id="css">
+    <h2>Découverte et gestion de la couleur avec le CSS3</h2>
+    <p>CSS (Cascading Style Sheets : feuilles de style en cascade) est un langage informatique qui sert à décrire la présentation des documents HTML et XML.</p>
+    <p>Le CSS comporte beaucoup de propriétés, qui sont un peu l'équivalent des balises en HTML. C'est lui qui vous permet de choisir la couleur de votre texte, c'est lui qui vous permet de sélectionner la police utilisée sur votre site, c'est lui qui permet de définir la taille du texte, les bordures, le fond...</p>
+    <p>Il permet entre autre que mon menu soit à gauche et occupe toute largeur, que l'en-tête de mon site soit en haut et qu'il soit toujours visible, etc...</p>
+
+    <h3>Emplacement du code CSS</h3>
+    <p>Vous avez le choix, car on peut écrire du code en langage CSS à 3 endroits différents :</p>
+    <ul>
+        <li>Dans un fichier .css (méthode la plus recommandée);</li>
+        <li>Dans l'en-tête <head> du fichier HTML;</li>
+        <li>Directement dans les balises du fichier HTML via un attribut style (méthode la moins recommandée);</li>
+    </ul>
+    <p>Sous Notepad++, il suffit d'enregistrer le nouvel (ex : style) onglet en code .css</p>
+    <p>Sous explorateur de fichiers, les 2 fichiers seront placés côte à côte. D'un côté le *.html, de l'autre le *.css</p>
+</div>
+
+</body>
+</html>

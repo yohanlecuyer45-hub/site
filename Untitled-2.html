@@ -1,0 +1,618 @@
+// Version avec le CSS inclus directement dans chaque fichier HTML
+
+// --- AJOUT POUR GALERIE.HTML ---
+// Remplace ou complète la section existante de galerie.html par :
+
+<section class="galerie">
+    <div class="galerie-elem">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/65/T34_tank_World_of_Tanks.jpg" alt="T-34 Tank">
+        <span class="galerie-caption">T-34 (Char moyen)</span>
+    </div>
+    <div class="galerie-elem">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/3/31/Panzer_IV_World_of_Tanks.jpg" alt="Panzer IV Tank">
+        <span class="galerie-caption">Panzer IV (Char moyen)</span>
+    </div>
+    <div class="galerie-elem">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d2/Maus_tank_World_of_Tanks.jpg" alt="Maus Tank">
+        <span class="galerie-caption">Maus (Char lourd)</span>
+    </div>
+    <div class="galerie-elem">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/9/9c/Jagdpanther_Latrun_4.jpg" alt="Jagdpanther">
+        <span class="galerie-caption">Jagdpanther (Chasseur de chars)</span>
+    </div>
+    <div class="galerie-elem">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/3/35/SU-152-Latrun-2.jpg" alt="SU-152">
+        <span class="galerie-caption">SU-152 (Artillerie)</span>
+    </div>
+    <div class="galerie-elem">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/T-50_1.jpg" alt="T-50 Char léger">
+        <span class="galerie-caption">T-50 (Char léger)</span>
+    </div>
+</section>
+
+// --- AJOUT POUR TYPES DE TANKS (tanks.html) ---
+// Ajoute section d’images sous la liste des types de tanks :
+
+<section class="galerie-types" style="margin-top:30px;">
+    <h2 style="color:#e1b74a; text-align:center;">Exemples de Types de Chars</h2>
+    <div style="display: flex; flex-wrap: wrap; gap: 28px; justify-content: center;">
+        <div style="text-align: center;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/T-50_1.jpg" alt="Char léger" style="width:140px; border-radius:8px; box-shadow:0 4px 10px rgba(0,0,0,0.4);">
+            <div style="color:#e1b74a;font-weight:bold; margin-top:6px;">Char léger : T-50</div>
+        </div>
+        <div style="text-align: center;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/65/T34_tank_World_of_Tanks.jpg" alt="Char moyen" style="width:140px; border-radius:8px; box-shadow:0 4px 10px rgba(0,0,0,0.4);">
+            <div style="color:#e1b74a;font-weight:bold; margin-top:6px;">Char moyen : T-34</div>
+        </div>
+        <div style="text-align: center;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/d/d2/Maus_tank_World_of_Tanks.jpg" alt="Char lourd" style="width:140px; border-radius:8px; box-shadow:0 4px 10px rgba(0,0,0,0.4);">
+            <div style="color:#e1b74a;font-weight:bold; margin-top:6px;">Char lourd : Maus</div>
+        </div>
+        <div style="text-align: center;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/9/9c/Jagdpanther_Latrun_4.jpg" alt="Chasseur de chars" style="width:140px; border-radius:8px; box-shadow:0 4px 10px rgba(0,0,0,0.4);">
+            <div style="color:#e1b74a;font-weight:bold; margin-top:6px;">Chasseur de chars : Jagdpanther</div>
+        </div>
+        <div style="text-align: center;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/3/35/SU-152-Latrun-2.jpg" alt="Artillerie" style="width:140px; border-radius:8px; box-shadow:0 4px 10px rgba(0,0,0,0.4);">
+            <div style="color:#e1b74a;font-weight:bold; margin-top:6px;">Artillerie : SU-152</div>
+        </div>
+    </div>
+</section>
+
+// --- AJOUT POUR HISTOIRE.HTML ---
+// Ajoute cette galerie, par exemple après un texte historique :
+<section class="galerie-histoire" style="margin-top:30px;">
+    <h2 style="color:#e1b74a; text-align:center;">Chars emblématiques de l'histoire</h2>
+    <div style="display: flex; gap:28px; justify-content: center; flex-wrap: wrap;">
+        <div style="text-align: center;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b9/FT-17_musee_des_blindes_1.jpg" alt="Renault FT" style="width:120px; border-radius:8px; box-shadow:0 4px 10px rgba(0,0,0,0.4);">
+            <div style="color:#e1b74a;font-weight:bold; margin-top:6px;">Première Guerre : Renault FT</div>
+        </div>
+        <div style="text-align: center;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/9/90/Panzer_IV_Ausf_F2_latrun_3.jpg" alt="Panzer IV" style="width:120px; border-radius:8px; box-shadow:0 4px 10px rgba(0,0,0,0.4);">
+            <div style="color:#e1b74a;font-weight:bold; margin-top:6px;">Seconde Guerre : Panzer IV</div>
+        </div>
+        <div style="text-align: center;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/64/T-34-85_RB8.jpg" alt="T-34-85" style="width:120px; border-radius:8px; box-shadow:0 4px 10px rgba(0,0,0,0.4);">
+            <div style="color:#e1b74a;font-weight:bold; margin-top:6px;">Seconde Guerre : T-34-85</div>
+        </div>
+        <div style="text-align: center;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/AMX-30-B2.jpg" alt="AMX-30" style="width:120px; border-radius:8px; box-shadow:0 4px 10px rgba(0,0,0,0.4);">
+            <div style="color:#e1b74a;font-weight:bold; margin-top:6px;">Guerre froide : AMX-30</div>
+        </div>
+    </div>
+</section>
+
+// INDEX.HTML (Page d'accueil)
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>World of Tanks - Accueil</title>
+    <style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #24272b;
+    color: #f1f1f1;
+    margin: 0;
+    padding: 0;
+}
+nav {
+    background-color: #1a1c20;
+    padding: 15px;
+}
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
+nav ul li a {
+    color: #e1b74a;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+nav ul li a:hover {
+    color: #ffffff;
+}
+header {
+    text-align: center;
+    background-color: #393e46;
+    padding: 40px 10px 20px 10px;
+}
+section {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #23272b;
+    border-radius: 8px;
+}
+footer {
+    background-color: #1a1c20;
+    text-align: center;
+    color: #c2c2c2;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+.galerie {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.galerie-elem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.galerie img {
+    width: 220px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+}
+.galerie-caption {
+    margin-top: 10px;
+    color: #e1b74a;
+    font-weight: bold;
+    font-size: 1em;
+    text-align: center;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+input, textarea {
+    border: none;
+    border-radius: 5px;
+    padding: 8px;
+    margin-top: 4px;
+}
+button[type="submit"] {
+    background-color: #e1b74a;
+    color: #24272b;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+button[type="submit"]:hover {
+    background-color: #b39229;
+}
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="histoire.html">Histoire</a></li>
+            <li><a href="tanks.html">Types de Tanks</a></li>
+            <li><a href="galerie.html">Galerie</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+    <header>
+        <h1>Bienvenue sur World of Tanks Fan Site</h1>
+        <p>Découvrez l'univers palpitant de World of Tanks, un jeu de guerre emblématique avec des chars légendaires !</p>
+    </header>
+    <section>
+        <h2>À propos du jeu</h2>
+        <p>
+            World of Tanks est un jeu de combat de véhicules blindés en ligne multijoueur massivement populaire. Choisissez votre tank, rejoignez la bataille et menez votre équipe à la victoire !
+        </p>
+    </section>
+    <footer>
+        <p>&copy; 2024 World of Tanks Fan Site. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>
+
+// HISTOIRE.HTML
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>World of Tanks - Histoire</title>
+    <style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #24272b;
+    color: #f1f1f1;
+    margin: 0;
+    padding: 0;
+}
+nav {
+    background-color: #1a1c20;
+    padding: 15px;
+}
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
+nav ul li a {
+    color: #e1b74a;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+nav ul li a:hover {
+    color: #ffffff;
+}
+header {
+    text-align: center;
+    background-color: #393e46;
+    padding: 40px 10px 20px 10px;
+}
+section {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #23272b;
+    border-radius: 8px;
+}
+footer {
+    background-color: #1a1c20;
+    text-align: center;
+    color: #c2c2c2;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="histoire.html">Histoire</a></li>
+            <li><a href="tanks.html">Types de Tanks</a></li>
+            <li><a href="galerie.html">Galerie</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+    <header>
+        <h1>L'histoire de World of Tanks</h1>
+    </header>
+    <section>
+        <p>
+            World of Tanks a été lancé en 2010 par le studio biélorusse Wargaming. Depuis, des millions de joueurs participent à des batailles épiques, collectionnent des tanks provenant de différentes nations et progressent dans l’arbre technologique.
+        </p>
+    </section>
+    <footer>
+        <p>&copy; 2024 World of Tanks Fan Site. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>
+
+// TANKS.HTML
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>World of Tanks - Types de Tanks</title>
+    <style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #24272b;
+    color: #f1f1f1;
+    margin: 0;
+    padding: 0;
+}
+nav {
+    background-color: #1a1c20;
+    padding: 15px;
+}
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
+nav ul li a {
+    color: #e1b74a;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+nav ul li a:hover {
+    color: #ffffff;
+}
+header {
+    text-align: center;
+    background-color: #393e46;
+    padding: 40px 10px 20px 10px;
+}
+section {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #23272b;
+    border-radius: 8px;
+}
+footer {
+    background-color: #1a1c20;
+    text-align: center;
+    color: #c2c2c2;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="histoire.html">Histoire</a></li>
+            <li><a href="tanks.html">Types de Tanks</a></li>
+            <li><a href="galerie.html">Galerie</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+    <header>
+        <h1>Les différents types de Tanks</h1>
+    </header>
+    <section>
+        <ul>
+            <li><strong>Chars légers :</strong> Rapides et mobiles, parfaits pour la reconnaissance.</li>
+            <li><strong>Chars moyens :</strong> Polyvalents, équilibrés en mobilité et puissance de feu.</li>
+            <li><strong>Chars lourds :</strong> Fortement blindés, idéaux en première ligne.</li>
+            <li><strong>Chasseurs de chars :</strong> Excellents pour infliger de lourds dégâts à distance.</li>
+            <li><strong>Artillerie :</strong> Tireurs longue distance, soutien des alliés.</li>
+        </ul>
+    </section>
+    <footer>
+        <p>&copy; 2024 World of Tanks Fan Site. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>
+
+// GALERIE.HTML
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>World of Tanks - Galerie</title>
+    <style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #24272b;
+    color: #f1f1f1;
+    margin: 0;
+    padding: 0;
+}
+nav {
+    background-color: #1a1c20;
+    padding: 15px;
+}
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
+nav ul li a {
+    color: #e1b74a;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+nav ul li a:hover {
+    color: #ffffff;
+}
+header {
+    text-align: center;
+    background-color: #393e46;
+    padding: 40px 10px 20px 10px;
+}
+section {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #23272b;
+    border-radius: 8px;
+}
+footer {
+    background-color: #1a1c20;
+    text-align: center;
+    color: #c2c2c2;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+.galerie {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.galerie-elem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.galerie img {
+    width: 220px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+}
+.galerie-caption {
+    margin-top: 10px;
+    color: #e1b74a;
+    font-weight: bold;
+    font-size: 1em;
+    text-align: center;
+}
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="histoire.html">Histoire</a></li>
+            <li><a href="tanks.html">Types de Tanks</a></li>
+            <li><a href="galerie.html">Galerie</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+    <header>
+        <h1>Galerie d'images</h1>
+    </header>
+    <section class="galerie">
+        <div class="galerie-elem">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/65/T34_tank_World_of_Tanks.jpg" alt="T-34 Tank">
+            <span class="galerie-caption">T-34</span>
+        </div>
+        <div class="galerie-elem">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/3/31/Panzer_IV_World_of_Tanks.jpg" alt="Panzer IV Tank">
+            <span class="galerie-caption">Panzer IV</span>
+        </div>
+        <div class="galerie-elem">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/d/d2/Maus_tank_World_of_Tanks.jpg" alt="Maus Tank">
+            <span class="galerie-caption">Maus</span>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; 2024 World of Tanks Fan Site. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>
+
+// CONTACT.HTML
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>World of Tanks - Contact</title>
+    <style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #24272b;
+    color: #f1f1f1;
+    margin: 0;
+    padding: 0;
+}
+nav {
+    background-color: #1a1c20;
+    padding: 15px;
+}
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
+nav ul li a {
+    color: #e1b74a;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+nav ul li a:hover {
+    color: #ffffff;
+}
+header {
+    text-align: center;
+    background-color: #393e46;
+    padding: 40px 10px 20px 10px;
+}
+section {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #23272b;
+    border-radius: 8px;
+}
+footer {
+    background-color: #1a1c20;
+    text-align: center;
+    color: #c2c2c2;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+input, textarea {
+    border: none;
+    border-radius: 5px;
+    padding: 8px;
+    margin-top: 4px;
+}
+button[type="submit"] {
+    background-color: #e1b74a;
+    color: #24272b;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+button[type="submit"]:hover {
+    background-color: #b39229;
+}
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="histoire.html">Histoire</a></li>
+            <li><a href="tanks.html">Types de Tanks</a></li>
+            <li><a href="galerie.html">Galerie</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+    <header>
+        <h1>Contactez-nous</h1>
+    </header>
+    <section>
+        <form>
+            <label for="name">Nom :</label>
+            <input type="text" id="name" name="name" required><br>
+
+            <label for="email">Email :</label>
+            <input type="email" id="email" name="email" required><br>
+
+            <label for="message">Message :</label><br>
+            <textarea id="message" name="message" rows="4" required></textarea><br>
+
+            <button type="submit">Envoyer</button>
+        </form>
+    </section>
+    <footer>
+        <p>&copy; 2024 World of Tanks Fan Site. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>
+
+
+

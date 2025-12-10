@@ -1,0 +1,125 @@
+/* styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #24272b;
+    color: #f1f1f1;
+    margin: 0;
+    padding: 0;
+}
+nav {
+    background-color: #1a1c20;
+    padding: 15px;
+}
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
+nav ul li a {
+    color: #e1b74a;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+nav ul li a:hover {
+    color: #ffffff;
+}
+header {
+    text-align: center;
+    background-color: #393e46;
+    padding: 40px 10px 20px 10px;
+}
+section {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #23272b;
+    border-radius: 8px;
+}
+footer {
+    background-color: #1a1c20;
+    text-align: center;
+    color: #c2c2c2;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+/* GALERIE.HTML spécifique */
+.galerie {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.galerie-elem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.galerie img {
+    width: 220px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+}
+.galerie-caption {
+    margin-top: 10px;
+    color: #e1b74a;
+    font-weight: bold;
+    font-size: 1em;
+    text-align: center;
+}
+
+/* Pour form & contact.html */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+input, textarea {
+    border: none;
+    border-radius: 5px;
+    padding: 8px;
+    margin-top: 4px;
+}
+button[type="submit"] {
+    background-color: #e1b74a;
+    color: #24272b;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+button[type="submit"]:hover {
+    background-color: #b39229;
+}
+
+/* Divers pour galeries et images */
+.galerie-types, .galerie-histoire {
+    margin-top: 30px;
+}
+.galerie-types h2,
+.galerie-histoire h2 {
+    color: #e1b74a;
+    text-align: center;
+}
+.galerie-types .galerie-caption,
+.galerie-histoire .galerie-caption {
+    margin-top: 6px;
+    color: #e1b74a;
+    font-weight: bold;
+}
+
+/* Disposition des blocs images dans galeries supplémentaires */
+.galerie-types > div,
+.galerie-histoire > div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px;

@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Découvrir l'Astronomie</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to bottom, #0a0e27 0%, #1a1a3e 50%, #2d1b4e 100%);
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+
+        header {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 2rem 0;
+            text-align: center;
+            border-bottom: 3px solid #6366f1;
+            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
+        }
+
+        header h1 {
+            font-size: 3rem;
+            color: #fff;
+            text-shadow: 0 0 20px #6366f1, 0 0 40px #4f46e5;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            color: #c7d2fe;
+        }
+
+        nav {
+            background: rgba(15, 23, 42, 0.8);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: #e0e7ff;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        nav a:hover {
+            background: #6366f1;
+            transform: translateY(-2px);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        section {
+            margin: 3rem 0;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        section h2 {
+            font-size: 2.5rem;
+            color: #a5b4fc;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            text-shadow: 0 0 10px rgba(165, 180, 252, 0.5);
+        }
+
+        .planetes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .planete-card {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 2px solid rgba(99, 102, 241, 0.3);
+            transition: all 0.3s;
+        }
+
+        .planete-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+            border-color: #6366f1;
+        }
+
+        .planete-card h3 {
+            color: #fbbf24;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .planete-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 1rem auto;
+            display: block;
+        }
+
+        .mercure { background: radial-gradient(circle, #b0b0b0 0%, #696969 100%); }
+        .venus { background: radial-gradient(circle, #ffd700 0%, #ff8c00 100%); }
+        .terre { background: radial-gradient(circle, #4169e1 0%, #228b22 50%, #1e90ff 100%); }
+        .mars { background: radial-gradient(circle, #ff6347 0%, #8b0000 100%); }
+        .jupiter { background: radial-gradient(circle, #daa520 0%, #cd853f 50%, #f4a460 100%); }
+        .saturne { background: radial-gradient(circle, #f0e68c 0%, #daa520 100%); 
+                   box-shadow: 0 0 0 15px rgba(218, 165, 32, 0.3); }
+        .uranus { background: radial-gradient(circle, #40e0d0 0%, #4682b4 100%); }
+        .neptune { background: radial-gradient(circle, #4169e1 0%, #191970 100%); }
+
+        .info-box {
+            background: rgba(79, 70, 229, 0.1);
+            border-left: 4px solid #6366f1;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            border-radius: 5px;
+        }
+
+        .constellation-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .constellation-item {
+            background: rgba(99, 102, 241, 0.15);
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid rgba(165, 180, 252, 0.3);
+        }
+
+        footer {
+            background: rgba(0, 0, 0, 0.8);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+            border-top: 2px solid #6366f1;
+        }
+
+        footer p {
+            color: #9ca3af;
+        }
+
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars">
+        <div class="star" style="top: 10%; left: 20%; animation-delay: 0s;"></div>
+        <div class="star" style="top: 20%; left: 80%; animation-delay: 0.5s;"></div>
+        <div class="star" style="top: 40%; left: 10%; animation-delay: 1s;"></div>
+        <div class="star" style="top: 60%; left: 90%; animation-delay: 1.5s;"></div>
+        <div class="star" style="top: 80%; left: 30%; animation-delay: 2s;"></div>
+        <div class="star" style="top: 15%; left: 60%; animation-delay: 0.3s;"></div>
+        <div class="star" style="top: 70%; left: 70%; animation-delay: 1.2s;"></div>
+        <div class="star" style="top: 30%; left: 40%; animation-delay: 0.8s;"></div>
+    </div>
+
+    <header>
+        <h1>✨ L'Univers Astronomique ✨</h1>
+        <p>Explorez les merveilles du cosmos</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#systeme-solaire">Système Solaire</a></li>
+            <li><a href="#etoiles">Étoiles</a></li>
+            <li><a href="#constellations">Constellations</a></li>
+            <li><a href="#galaxies">Galaxies</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <section id="systeme-solaire">
+            <h2>🪐 Notre Système Solaire</h2>
+            <p style="text-align: center; margin-bottom: 2rem;">Le système solaire est composé du Soleil et de tous les objets qui gravitent autour de lui, dont huit planètes principales.</p>
+            
+            <div class="planetes-grid">
+                <div class="planete-card">
+                    <h3>☀️ Soleil</h3>
+                    <div class="planete-icon" style="background: radial-gradient(circle, #ffd700 0%, #ff8c00 100%); width: 100px; height: 100px;"></div>
+                    <p>Notre étoile, source de toute vie sur Terre. Température de surface : 5 500°C</p>
+                </div>
+
+                <div class="planete-card">
+                    <h3>Mercure</h3>
+                    <div class="planete-icon mercure"></div>
+                    <p>La plus petite et la plus proche du Soleil. Pas d'atmosphère.</p>
+                </div>
+
+                <div class="planete-card">
+                    <h3>Vénus</h3>
+                    <div class="planete-icon venus"></div>
+                    <p>La plus chaude du système solaire malgré sa distance. Étoile du Berger.</p>
+                </div>
+
+                <div class="planete-card">
+                    <h3>Terre 🌍</h3>
+                    <div class="planete-icon terre"></div>
+                    <p>Notre planète bleue, la seule connue abritant la vie.</p>
+                </div>
+
+                <div class="planete-card">
+                    <h3>Mars</h3>
+                    <div class="planete-icon mars"></div>
+                    <p>La planète rouge, future destination de l'humanité.</p>
+                </div>
+
+                <div class="planete-card">
+                    <h3>Jupiter</h3>
+                    <div class="planete-icon jupiter"></div>
+                    <p>La plus grande planète, une géante gazeuse avec la Grande Tache Rouge.</p>
+                </div>
+
+                <div class="planete-card">
+                    <h3>Saturne</h3>
+                    <div class="planete-icon saturne"></div>
+                    <p>Célèbre pour ses magnifiques anneaux composés de glace et de roche.</p>
+                </div>
+
+                <div class="planete-card">
+                    <h3>Uranus</h3>
+                    <div class="planete-icon uranus"></div>
+                    <p>Une géante de glace qui tourne sur le côté.</p>
+                </div>
+
+                <div class="planete-card">
+                    <h3>Neptune</h3>
+                    <div class="planete-icon neptune"></div>
+                    <p>La planète la plus éloignée, aux vents les plus violents.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="etoiles">
+            <h2>⭐ Les Étoiles</h2>
+            <div class="info-box">
+                <p>Les étoiles sont des boules de gaz incandescent qui produisent leur propre lumière par fusion nucléaire. Notre Soleil est une étoile de taille moyenne.</p>
+            </div>
+            <h3 style="color: #fbbf24; margin-top: 2rem;">Types d'étoiles :</h3>
+            <ul style="margin-left: 2rem; margin-top: 1rem;">
+                <li><strong style="color: #ef4444;">Naines rouges</strong> - Les plus nombreuses et les plus petites</li>
+                <li><strong style="color: #fbbf24;">Étoiles similaires au Soleil</strong> - Température moyenne</li>
+                <li><strong style="color: #60a5fa;">Géantes bleues</strong> - Très chaudes et massives</li>
+                <li><strong style="color: #f87171;">Supergéantes rouges</strong> - Énormes étoiles en fin de vie</li>
+            </ul>
+        </section>
+
+        <section id="constellations">
+            <h2>✨ Les Constellations</h2>
+            <p style="text-align: center; margin-bottom: 1.5rem;">Les constellations sont des groupes d'étoiles formant des figures imaginaires dans le ciel nocturne.</p>
+            
+            <div class="constellation-list">
+                <div class="constellation-item">
+                    <h4>Grande Ourse</h4>
+                    <p>Facilement reconnaissable</p>
+                </div>
+                <div class="constellation-item">
+                    <h4>Orion</h4>
+                    <p>Le chasseur céleste</p>
+                </div>
+                <div class="constellation-item">
+                    <h4>Cassiopée</h4>
+                    <p>En forme de W</p>
+                </div>
+                <div class="constellation-item">
+                    <h4>Scorpion</h4>
+                    <p>Visible en été</p>
+                </div>
+                <div class="constellation-item">
+                    <h4>Cygne</h4>
+                    <p>La croix du nord</p>
+                </div>
+                <div class="constellation-item">
+                    <h4>Lion</h4>
+                    <p>Constellation du zodiaque</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="galaxies">
+            <h2>🌌 Les Galaxies</h2>
+            <div class="info-box">
+                <p>Une galaxie est un immense ensemble d'étoiles, de gaz, de poussières et de matière noire liés par la gravité.</p>
+            </div>
+            
+            <h3 style="color: #a5b4fc; margin-top: 2rem;">Notre galaxie : La Voie Lactée</h3>
+            <p style="margin: 1rem 0;">La Voie Lactée est une galaxie spirale contenant entre 200 et 400 milliards d'étoiles. Notre système solaire se trouve dans l'un de ses bras spiraux, à environ 26 000 années-lumière du centre galactique.</p>
+            
+            <div class="info-box" style="background: rgba(139, 92, 246, 0.1); border-left-color: #8b5cf6;">
+                <h4 style="color: #c4b5fd;">Fait fascinant :</h4>
+                <p>L'Univers observable contient environ 2 000 milliards de galaxies !</p>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Découvrir l'Astronomie - Explorez l'infini 🌠</p>
+    </footer>
+</body>
+</html>

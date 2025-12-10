@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Révision - Nombres Complexes</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        nav {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        nav a:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        section {
+            background: white;
+            margin: 2rem 0;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        section h2 {
+            color: #667eea;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 0.5rem;
+        }
+
+        section h3 {
+            color: #764ba2;
+            font-size: 1.5rem;
+            margin: 1.5rem 0 1rem 0;
+        }
+
+        .definition-box {
+            background: linear-gradient(135deg, #e0e7ff 0%, #f3e8ff 100%);
+            padding: 1.5rem;
+            border-left: 5px solid #667eea;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        .definition-box h4 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .formule {
+            background: #f8fafc;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border: 2px solid #e2e8f0;
+            font-size: 1.1rem;
+            text-align: center;
+            font-family: 'Courier New', monospace;
+        }
+
+        .grid-formules {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .card-formule {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            padding: 1rem;
+            border-radius: 10px;
+            border: 2px solid #fbbf24;
+            transition: all 0.3s;
+        }
+
+        .card-formule:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(251, 191, 36, 0.3);
+        }
+
+        .card-formule h4 {
+            color: #92400e;
+            margin-bottom: 0.5rem;
+        }
+
+        .exemple {
+            background: #ecfdf5;
+            padding: 1.5rem;
+            border-left: 5px solid #10b981;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        .exemple h4 {
+            color: #047857;
+            margin-bottom: 0.5rem;
+        }
+
+        .exemple-etapes {
+            margin-left: 1rem;
+            margin-top: 1rem;
+        }
+
+        .etape {
+            margin: 0.5rem 0;
+            padding-left: 1rem;
+            border-left: 3px solid #10b981;
+        }
+
+        .propriete {
+            background: #fef2f2;
+            padding: 1rem;
+            border-left: 5px solid #ef4444;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        .propriete h4 {
+            color: #dc2626;
+            margin-bottom: 0.5rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: white;
+        }
+
+        th {
+            background: #667eea;
+            color: white;
+            padding: 1rem;
+            text-align: left;
+        }
+
+        td {
+            padding: 0.75rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        tr:hover {
+            background: #f8fafc;
+        }
+
+        .highlight {
+            background: #fef08a;
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+
+        .complexe-i {
+            color: #dc2626;
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        .plan-complexe {
+            background: #f8fafc;
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+            border: 2px dashed #667eea;
+            text-align: center;
+        }
+
+        .axes {
+            width: 100%;
+            max-width: 400px;
+            margin: 1rem auto;
+            position: relative;
+            height: 300px;
+            background: white;
+            border: 2px solid #cbd5e1;
+            border-radius: 8px;
+        }
+
+        .axe-reel, .axe-imaginaire {
+            position: absolute;
+            background: #64748b;
+        }
+
+        .axe-reel {
+            width: 100%;
+            height: 2px;
+            top: 50%;
+            left: 0;
+        }
+
+        .axe-imaginaire {
+            width: 2px;
+            height: 100%;
+            left: 50%;
+            top: 0;
+        }
+
+        .label-axe {
+            position: absolute;
+            font-weight: bold;
+            color: #475569;
+        }
+
+        .label-reel {
+            right: 10px;
+            top: 45%;
+        }
+
+        .label-imag {
+            left: 52%;
+            top: 10px;
+        }
+
+        footer {
+            background: rgba(255, 255, 255, 0.95);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        footer p {
+            color: #666;
+        }
+
+        ul, ol {
+            margin-left: 2rem;
+            margin-top: 1rem;
+        }
+
+        li {
+            margin: 0.5rem 0;
+        }
+
+        strong {
+            color: #667eea;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>📐 Nombres Complexes</h1>
+        <p>Tout ce qu'il faut savoir pour vos révisions</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#definition">Définition</a></li>
+            <li><a href="#operations">Opérations</a></li>
+            <li><a href="#formes">Formes</a></li>
+            <li><a href="#formules">Formules Clés</a></li>
+            <li><a href="#exemples">Exemples</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <section id="definition">
+            <h2>📚 Définition et Notions de Base</h2>
+            
+            <div class="definition-box">
+                <h4>Le nombre imaginaire <span class="complexe-i">i</span></h4>
+                <p>Le nombre complexe <span class="complexe-i">i</span> est défini par la propriété fondamentale :</p>
+                <div class="formule"><span class="complexe-i">i</span>² = -1</div>
+                <p>Donc : <span class="complexe-i">i</span> = √(-1)</p>
+            </div>
+
+            <div class="definition-box">
+                <h4>Forme algébrique d'un nombre complexe</h4>
+                <p>Tout nombre complexe z peut s'écrire sous la forme :</p>
+                <div class="formule">z = a + b<span class="complexe-i">i</span></div>
+                <p>Où :</p>
+                <ul>
+                    <li><strong>a</strong> est la <span class="highlight">partie réelle</span> : Re(z) = a</li>
+                    <li><strong>b</strong> est la <span class="highlight">partie imaginaire</span> : Im(z) = b</li>
+                    <li>a et b sont des nombres réels</li>
+                </ul>
+            </div>
+
+            <div class="plan-complexe">
+                <h3>Le Plan Complexe</h3>
+                <p>Les nombres complexes se représentent dans un plan :</p>
+                <div class="axes">
+                    <div class="axe-reel"></div>
+                    <div class="axe-imaginaire"></div>
+                    <span class="label-axe label-reel">Axe réel</span>
+                    <span class="label-axe label-imag">Axe imaginaire</span>
+                </div>
+                <p>Point M(a, b) représente z = a + b<span class="complexe-i">i</span></p>
+            </div>
+
+            <div class="propriete">
+                <h4>Conjugué d'un nombre complexe</h4>
+                <p>Le conjugué de z = a + b<span class="complexe-i">i</span> est :</p>
+                <div class="formule">z̄ = a - b<span class="complexe-i">i</span></div>
+                <p>Le conjugué est le symétrique par rapport à l'axe réel.</p>
+            </div>
+        </section>
+
+        <section id="operations">
+            <h2>➕ Opérations sur les Nombres Complexes</h2>
+
+            <h3>Addition et Soustraction</h3>
+            <div class="formule">
+                (a + b<span class="complexe-i">i</span>) + (c + d<span class="complexe-i">i</span>) = (a + c) + (b + d)<span class="complexe-i">i</span>
+            </div>
+            <p>On additionne les parties réelles ensemble et les parties imaginaires ensemble.</p>
+
+            <h3>Multiplication</h3>
+            <div class="formule">
+                (a + b<span class="complexe-i">i</span>) × (c + d<span class="complexe-i">i</span>) = (ac - bd) + (ad + bc)<span class="complexe-i">i</span>
+            </div>
+            <p><strong>Astuce :</strong> Développer comme un produit normal, puis remplacer <span class="complexe-i">i</span>² par -1</p>
+
+            <h3>Division</h3>
+            <p>Pour diviser deux nombres complexes, on multiplie le numérateur et le dénominateur par le conjugué du dénominateur :</p>
+            <div class="formule">
+                (a + b<span class="complexe-i">i</span>) / (c + d<span class="complexe-i">i</span>) = [(a + b<span class="complexe-i">i</span>)(c - d<span class="complexe-i">i</span>)] / (c² + d²)
+            </div>
+
+            <div class="exemple">
+                <h4>Exemple : Multiplication</h4>
+                <p>Calculons (2 + 3<span class="complexe-i">i</span>) × (1 + 4<span class="complexe-i">i</span>)</p>
+                <div class="exemple-etapes">
+                    <div class="etape">= 2×1 + 2×4<span class="complexe-i">i</span> + 3<span class="complexe-i">i</span>×1 + 3<span class="complexe-i">i</span>×4<span class="complexe-i">i</span></div>
+                    <div class="etape">= 2 + 8<span class="complexe-i">i</span> + 3<span class="complexe-i">i</span> + 12<span class="complexe-i">i</span>²</div>
+                    <div class="etape">= 2 + 11<span class="complexe-i">i</span> + 12×(-1)</div>
+                    <div class="etape">= 2 + 11<span class="complexe-i">i</span> - 12</div>
+                    <div class="etape"><strong>= -10 + 11<span class="complexe-i">i</span></strong></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="formes">
+            <h2>🔄 Différentes Formes</h2>
+
+            <h3>1. Forme Algébrique</h3>
+            <div class="formule">z = a + b<span class="complexe-i">i</span></div>
+
+            <h3>2. Forme Trigonométrique (ou polaire)</h3>
+            <div class="formule">z = r(cos θ + <span class="complexe-i">i</span> sin θ)</div>
+            <p>Où :</p>
+            <ul>
+                <li><strong>r</strong> = |z| = √(a² + b²) est le <span class="highlight">module</span></li>
+                <li><strong>θ</strong> est l'<span class="highlight">argument</span> (angle avec l'axe réel)</li>
+            </ul>
+
+            <h3>3. Forme Exponentielle</h3>
+            <div class="formule">z = r × e^(<span class="complexe-i">i</span>θ)</div>
+            <p><strong>Formule d'Euler :</strong> e^(<span class="complexe-i">i</span>θ) = cos θ + <span class="complexe-i">i</span> sin θ</p>
+
+            <div class="definition-box">
+                <h4>Passage d'une forme à l'autre</h4>
+                <p><strong>Algébrique → Polaire :</strong></p>
+                <ul>
+                    <li>Module : r = √(a² + b²)</li>
+                    <li>Argument : tan θ = b/a (attention au quadrant !)</li>
+                </ul>
+                <p><strong>Polaire → Algébrique :</strong></p>
+                <ul>
+                    <li>a = r cos θ</li>
+                    <li>b = r sin θ</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="formules">
+            <h2>📝 Formules Clés à Connaître</h2>
+
+            <div class="grid-formules">
+                <div class="card-formule">
+                    <h4>Module</h4>
+                    <p>|z| = √(a² + b²)</p>
+                    <p>|z|² = z × z̄</p>
+                </div>
+
+                <div class="card-formule">
+                    <h4>Conjugué</h4>
+                    <p>z + z̄ = 2a</p>
+                    <p>z - z̄ = 2b<span class="complexe-i">i</span></p>
+                    <p>z̄̄ = z</p>
+                </div>
+
+                <div class="card-formule">
+                    <h4>Produit</h4>
+                    <p>|z₁ × z₂| = |z₁| × |z₂|</p>
+                    <p>arg(z₁ × z₂) = arg(z₁) + arg(z₂)</p>
+                </div>
+
+                <div class="card-formule">
+                    <h4>Quotient</h4>
+                    <p>|z₁ / z₂| = |z₁| / |z₂|</p>
+                    <p>arg(z₁ / z₂) = arg(z₁) - arg(z₂)</p>
+                </div>
+
+                <div class="card-formule">
+                    <h4>Puissance</h4>
+                    <p>|z^n| = |z|^n</p>
+                    <p>arg(z^n) = n × arg(z)</p>
+                </div>
+
+                <div class="card-formule">
+                    <h4>Formule de Moivre</h4>
+                    <p>(cos θ + <span class="complexe-i">i</span> sin θ)^n</p>
+                    <p>= cos(nθ) + <span class="complexe-i">i</span> sin(nθ)</p>
+                </div>
+            </div>
+
+            <h3>Propriétés importantes du conjugué</h3>
+            <table>
+                <tr>
+                    <th>Propriété</th>
+                    <th>Formule</th>
+                </tr>
+                <tr>
+                    <td>Conjugué d'une somme</td>
+                    <td>z̄₁ + z₂ = z̄₁ + z̄₂</td>
+                </tr>
+                <tr>
+                    <td>Conjugué d'un produit</td>
+                    <td>z̄₁ × z₂ = z̄₁ × z̄₂</td>
+                </tr>
+                <tr>
+                    <td>Conjugué d'un quotient</td>
+                    <td>z̄₁ / z₂ = z̄₁ / z̄₂</td>
+                </tr>
+                <tr>
+                    <td>Conjugué d'une puissance</td>
+                    <td>(z)^n = (z̄)^n</td>
+                </tr>
+            </table>
+        </section>
+
+        <section id="exemples">
+            <h2>💡 Exemples Détaillés</h2>
+
+            <div class="exemple">
+                <h4>Exemple 1 : Calcul de module et argument</h4>
+                <p>Soit z = 1 + √3<span class="complexe-i">i</span></p>
+                <div class="exemple-etapes">
+                    <div class="etape"><strong>Module :</strong> |z| = √(1² + (√3)²) = √(1 + 3) = √4 = 2</div>
+                    <div class="etape"><strong>Argument :</strong> tan θ = √3/1 = √3</div>
+                    <div class="etape">Donc θ = π/3 (car z est dans le 1er quadrant)</div>
+                    <div class="etape"><strong>Forme polaire :</strong> z = 2(cos(π/3) + <span class="complexe-i">i</span> sin(π/3))</div>
+                    <div class="etape"><strong>Forme exponentielle :</strong> z = 2e^(<span class="complexe-i">i</span>π/3)</div>
+                </div>
+            </div>
+
+            <div class="exemple">
+                <h4>Exemple 2 : Division de nombres complexes</h4>
+                <p>Calculons (3 + 2<span class="complexe-i">i</span>) / (1 + <span class="complexe-i">i</span>)</p>
+                <div class="exemple-etapes">
+                    <div class="etape">Conjugué du dénominateur : 1 - <span class="complexe-i">i</span></div>
+                    <div class="etape">= [(3 + 2<span class="complexe-i">i</span>)(1 - <span class="complexe-i">i</span>)] / [(1 + <span class="complexe-i">i</span>)(1 - <span class="complexe-i">i</span>)]</div>
+                    <div class="etape">Numérateur : 3 - 3<span class="complexe-i">i</span> + 2<span class="complexe-i">i</span> - 2<span class="complexe-i">i</span>² = 3 - <span class="complexe-i">i</span> + 2 = 5 - <span class="complexe-i">i</span></div>
+                    <div class="etape">Dénominateur : 1 - <span class="complexe-i">i</span>² = 1 + 1 = 2</div>
+                    <div class="etape"><strong>Résultat : (5 - <span class="complexe-i">i</span>) / 2 = 5/2 - (1/2)<span class="complexe-i">i</span></strong></div>
+                </div>
+            </div>
+
+            <div class="exemple">
+                <h4>Exemple 3 : Utilisation de la forme exponentielle</h4>
+                <p>Calculons (1 + <span class="complexe-i">i</span>)^8</p>
+                <div class="exemple-etapes">
+                    <div class="etape">Forme exponentielle de 1 + <span class="complexe-i">i</span> : |z| = √2, arg(z) = π/4</div>
+                    <div class="etape">Donc : 1 + <span class="complexe-i">i</span> = √2 × e^(<span class="complexe-i">i</span>π/4)</div>
+                    <div class="etape">(1 + <span class="complexe-i">i</span>)^8 = (√2)^8 × e^(<span class="complexe-i">i</span>×8π/4)</div>
+                    <div class="etape">= 2^4 × e^(<span class="complexe-i">i</span>×2π) = 16 × e^(<span class="complexe-i">i</span>×2π)</div>
+                    <div class="etape">= 16 × (cos(2π) + <span class="complexe-i">i</span> sin(2π))</div>
+                    <div class="etape"><strong>= 16 × (1 + 0<span class="complexe-i">i</span>) = 16</strong></div>
+                </div>
+            </div>
+
+            <div class="propriete">
+                <h4>⚠️ Erreurs fréquentes à éviter</h4>
+                <ul>
+                    <li>Ne pas oublier que <span class="complexe-i">i</span>² = -1</li>
+                    <li>Attention au signe lors du calcul du conjugué</li>
+                    <li>Pour l'argument, vérifier le quadrant du point</li>
+                    <li>Les arguments s'additionnent lors d'un produit</li>
+                    <li>Ne pas confondre partie imaginaire b et b<span class="complexe-i">i</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>📖 Résumé pour les Révisions</h2>
+            
+            <table>
+                <tr>
+                    <th>Notion</th>
+                    <th>Formule Essentielle</th>
+                </tr>
+                <tr>
+                    <td>Définition de <span class="complexe-i">i</span></td>
+                    <td><span class="complexe-i">i</span>² = -1</td>
+                </tr>
+                <tr>
+                    <td>Forme algébrique</td>
+                    <td>z = a + b<span class="complexe-i">i</span></td>
+                </tr>
+                <tr>
+                    <td>Module</td>
+                    <td>|z| = √(a² + b²)</td>
+                </tr>
+                <tr>
+                    <td>Conjugué</td>
+                    <td>z̄ = a - b<span class="complexe-i">i</span></td>
+                </tr>
+                <tr>
+                    <td>Forme exponentielle</td>
+                    <td>z = r × e^(<span class="complexe-i">i</span>θ)</td>
+                </tr>
+                <tr>
+                    <td>Formule d'Euler</td>
+                    <td>e^(<span class="complexe-i">i</span>θ) = cos θ + <span class="complexe-i">i</span> sin θ</td>
+                </tr>
+                <tr>
+                    <td>Formule de Moivre</td>
+                    <td>(cos θ + <span class="complexe-i">i</span> sin θ)^n = cos(nθ) + <span class="complexe-i">i</span> sin(nθ)</td>
+                </tr>
+            </table>
+        </section>
+    </div>
+
+    <footer>
+        <p>📚 Bon courage pour vos révisions ! 💪</p>
+        <p>&copy; 2024 - Site de révision Nombres Complexes</p>
+    </footer>
+</body>
+</html>

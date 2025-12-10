@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banc Connecté - Projet Innovation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #60a5fa 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.95) 0%, rgba(59, 130, 246, 0.95) 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        header p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: #1e40af;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.5rem 1.5rem;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        nav a:hover {
+            background: #3b82f6;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(59, 130, 246, 0.3);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        section {
+            background: white;
+            margin: 2rem 0;
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        section h2 {
+            color: #1e40af;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #3b82f6, #60a5fa);
+            border-radius: 2px;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            border-left: 6px solid #3b82f6;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+
+        .hero h3 {
+            color: #1e40af;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 2px solid #3b82f6;
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(59, 130, 246, 0.3);
+            border-color: #1e40af;
+        }
+
+        .feature-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            color: #1e40af;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            color: #475569;
+            line-height: 1.8;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+
+        .tech-badge {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
+            transition: all 0.3s;
+        }
+
+        .tech-badge:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(59, 130, 246, 0.5);
+        }
+
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, #3b82f6 0%, #60a5fa 100%);
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            margin: 2rem 0;
+            position: relative;
+        }
+
+        .timeline-content {
+            background: #f0f9ff;
+            padding: 1.5rem;
+            border-radius: 12px;
+            width: 45%;
+            border: 2px solid #3b82f6;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: auto;
+        }
+
+        .timeline-content h4 {
+            color: #1e40af;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .benefits-list {
+            list-style: none;
+            margin: 2rem 0;
+        }
+
+        .benefits-list li {
+            background: #f0f9ff;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-radius: 10px;
+            border-left: 5px solid #3b82f6;
+            transition: all 0.3s;
+        }
+
+        .benefits-list li:hover {
+            transform: translateX(10px);
+            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.2);
+        }
+
+        .benefits-list li strong {
+            color: #1e40af;
+            font-size: 1.2rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .team-member {
+            background: linear-gradient(135deg, #f0f9ff 0%, #dbeafe 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            border: 2px solid #3b82f6;
+            transition: all 0.3s;
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
+        }
+
+        .team-avatar {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+        }
+
+        .team-member h4 {
+            color: #1e40af;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .team-member p {
+            color: #475569;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .cta-section h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #1e40af;
+            padding: 1rem 3rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-top: 1rem;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        footer {
+            background: rgba(30, 58, 138, 0.95);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+        }
+
+        .image-placeholder {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            border: 3px dashed #3b82f6;
+            border-radius: 15px;
+            padding: 3rem;
+            text-align: center;
+            margin: 2rem 0;
+            color: #1e40af;
+            font-size: 1.2rem;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            section {
+                padding: 2rem 1rem;
+            }
+
+            .timeline-content {
+                width: 100%;
+            }
+
+            .timeline::before {
+                left: 0;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-content {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🪑 Banc Connecté</h1>
+        <p>L'innovation au service du confort urbain</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#projet">Le Projet</a></li>
+            <li><a href="#fonctionnalites">Fonctionnalités</a></li>
+            <li><a href="#technologies">Technologies</a></li>
+            <li><a href="#avantages">Avantages</a></li>
+            <li><a href="#equipe">Équipe</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <section id="projet">
+            <h2>🎯 Notre Projet</h2>
+            
+            <div class="hero">
+                <h3>Vision du Projet</h3>
+                <p>Le Banc Connecté est un projet innovant qui réinvente le mobilier urbain en intégrant des technologies intelligentes pour améliorer l'expérience des utilisateurs dans les espaces publics. Notre objectif est de créer un espace de repos moderne, écologique et connecté.</p>
+            </div>
+
+            <div class="image-placeholder">
+                📸 Image du prototype du banc connecté
+            </div>
+
+            <div class="stats">
+                <div class="stat-card">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Écologique</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">24/7</span>
+                    <span class="stat-label">Disponible</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">IoT</span>
+                    <span class="stat-label">Connecté</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">Smart</span>
+                    <span class="stat-label">Intelligent</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="fonctionnalites">
+            <h2>⚡ Fonctionnalités Innovantes</h2>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🔋</div>
+                    <h3>Chargement Sans Fil</h3>
+                    <p>Rechargez vos appareils mobiles grâce à la technologie de charge sans fil intégrée, alimentée par panneaux solaires.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🌡️</div>
+                    <h3>Capteurs Intelligents</h3>
+                    <p>Mesure en temps réel de la température, de l'humidité et de la qualité de l'air pour votre confort.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">💡</div>
+                    <h3>Éclairage LED</h3>
+                    <p>Système d'éclairage automatique avec détecteur de présence pour la sécurité nocturne.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Application Mobile</h3>
+                    <p>Localisez les bancs disponibles, consultez les données environnementales et réservez votre place.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🌞</div>
+                    <h3>Énergie Solaire</h3>
+                    <p>Alimentation 100% autonome grâce aux panneaux photovoltaïques intégrés dans la structure.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">📡</div>
+                    <h3>WiFi Gratuit</h3>
+                    <p>Point d'accès WiFi public pour rester connecté lors de vos pauses.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="technologies">
+            <h2>🔧 Stack Technologique</h2>
+            
+            <p style="text-align: center; margin-bottom: 2rem; font-size: 1.1rem; color: #475569;">
+                Notre banc connecté utilise les dernières technologies IoT et énergies renouvelables
+            </p>
+
+            <div class="tech-stack">
+                <div class="tech-badge">Arduino / Raspberry Pi</div>
+                <div class="tech-badge">Capteurs IoT</div>
+                <div class="tech-badge">Panneaux Solaires</div>
+                <div class="tech-badge">Charge Sans Fil Qi</div>
+                <div class="tech-badge">Module WiFi</div>
+                <div class="tech-badge">Batterie Lithium</div>
+                <div class="tech-badge">LED RGB</div>
+                <div class="tech-badge">Application Mobile</div>
+                <div class="tech-badge">Cloud IoT</div>
+                <div class="tech-badge">Bluetooth BLE</div>
+            </div>
+
+            <div class="image-placeholder">
+                🔌 Schéma technique de l'architecture du système
+            </div>
+        </section>
+
+        <section id="avantages">
+            <h2>✅ Avantages & Bénéfices</h2>
+
+            <ul class="benefits-list">
+                <li>
+                    <strong>🌍 Écologique et Durable</strong>
+                    Utilisation exclusive d'énergies renouvelables, matériaux recyclés et conception éco-responsable pour un impact minimal sur l'environnement.
+                </li>
+                <li>
+                    <strong>👥 Amélioration de l'Expérience Utilisateur</strong>
+                    Offre un espace de repos moderne avec services connectés, améliorant le confort et la qualité de vie en milieu urbain.
+                </li>
+                <li>
+                    <strong>🏙️ Smart City</strong>
+                    Collecte de données urbaines (fréquentation, qualité de l'air, température) pour aider à optimiser la gestion des espaces publics.
+                </li>
+                <li>
+                    <strong>💰 Rentabilité</strong>
+                    Autonomie énergétique complète réduisant les coûts de maintenance et d'exploitation sur le long terme.
+                </li>
+                <li>
+                    <strong>🔒 Sécurité Renforcée</strong>
+                    Éclairage automatique et détection de présence augmentant la sécurité des espaces publics la nuit.
+                </li>
+                <li>
+                    <strong>📊 Données en Temps Réel</strong>
+                    Monitoring continu permettant une maintenance prédictive et une meilleure gestion des équipements urbains.
+                </li>
+            </ul>
+        </section>
+
+        <section id="developpement">
+            <h2>📅 Phases de Développement</h2>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h4>Phase 1 : Conception</h4>
+                        <p>Étude de marché, définition des besoins, design du banc et choix des technologies.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h4>Phase 2 : Prototype</h4>
+                        <p>Développement du prototype fonctionnel avec intégration des capteurs et systèmes électroniques.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h4>Phase 3 : Application</h4>
+                        <p>Création de l'application mobile et de l'interface de gestion des données.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h4>Phase 4 : Tests</h4>
+                        <p>Phase de test en conditions réelles, ajustements et optimisations.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h4>Phase 5 : Déploiement</h4>
+                        <p>Installation pilote dans un espace public et déploiement progressif.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="equipe">
+            <h2>👥 Notre Équipe</h2>
+
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="team-avatar">👨‍💻</div>
+                    <h4>Chef de Projet</h4>
+                    <p>Coordination et gestion globale du projet</p>
+                </div>
+
+                <div class="team-member">
+                    <div class="team-avatar">⚡</div>
+                    <h4>Ingénieur Électronique</h4>
+                    <p>Conception des circuits et intégration des capteurs</p>
+                </div>
+
+                <div class="team-member">
+                    <div class="team-avatar">💻</div>
+                    <h4>Développeur IoT</h4>
+                    <p>Programmation et connectivité des systèmes</p>
+                </div>
+
+                <div class="team-member">
+                    <div class="team-avatar">🎨</div>
+                    <h4>Designer Industriel</h4>
+                    <p>Design et ergonomie du banc</p>
+                </div>
+
+                <div class="team-member">
+                    <div class="team-avatar">🌱</div>
+                    <h4>Expert Énergie</h4>
+                    <p>Optimisation énergétique et solutions solaires</p>
+                </div>
+
+                <div class="team-member">
+                    <div class="team-avatar">📱</div>
+                    <h4>Développeur Mobile</h4>
+                    <p>Création de l'application mobile</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="cta-section">
+            <h3>Intéressé par notre projet ?</h3>
+            <p style="font-size: 1.1rem; margin: 1rem 0;">Contactez-nous pour plus d'informations ou pour devenir partenaire</p>
+            <a href="#contact" class="cta-button">Nous Contacter</a>
+        </div>
+
+        <section id="contact">
+            <h2>📧 Contact</h2>
+            
+            <div style="text-align: center; padding: 2rem;">
+                <p style="font-size: 1.2rem; color: #475569; margin-bottom: 2rem;">
+                    Pour toute question ou collaboration, n'hésitez pas à nous contacter
+                </p>
+                
+                <div style="background: #f0f9ff; padding: 2rem; border-radius: 15px; max-width: 600px; margin: 0 auto;">
+                    <p style="margin: 1rem 0;"><strong>📧 Email :</strong> contact@bancconnecte.fr</p>
+                    <p style="margin: 1rem 0;"><strong>📱 Téléphone :</strong> +33 1 23 45 67 89</p>
+                    <p style="margin: 1rem 0;"><strong>📍 Adresse :</strong> Campus Innovation, Amiens, France</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p><strong>Banc Connecté</strong> - Projet d'Innovation Technologique</p>
+        <p>&copy; 2024 - Tous droits réservés</p>
+        <p>🌱 Pour un avenir urbain plus intelligent et durable</p>
+    </footer>
+</body>
+</html>
